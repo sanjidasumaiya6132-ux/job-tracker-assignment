@@ -1,144 +1,45 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Application Tracker</title>
-  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-  <style type="text/tailwindcss">
-    @theme {
-      --font-syne: "Syne", sans-serif;
-      --font-dm: "DM Sans", sans-serif;
-      --color-navy: #1d3557;
-      --color-teal: #2a9d8f;
-      --color-coral: #e76f51;
-      --animate-fade-up: fadeUp 0.3s ease forwards;
-    }
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+    <link rel="stylesheet" href="tailwind.init.css">
 </head>
-<body class="bg-slate-100 font-dm min-h-screen">
+<body>
 
-  <div class="max-w-6xl mx-auto px-5 py-10">
-    <header class="mb-10">
-      <h1 class="font-syne text-4xl font-extrabold text-navy tracking-tight">
-        Job Application Tracker
-      </h1>
-    </header>
+<div class="container">
+    <h1>Job Application Tracker</h1>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      <div class="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-navy">
-        <p class="text-xs font-bold text-slate-500 uppercase mb-2">Total</p>
-        <p class="font-syne text-5xl font-extrabold text-navy">0</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-teal">
-        <p class="text-xs font-bold text-slate-500 uppercase mb-2">Interview</p>
-        <p class="font-syne text-5xl font-extrabold text-teal">0</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-coral">
-        <p class="text-xs font-bold text-slate-500 uppercase mb-2">Rejected</p>
-        <p class="font-syne text-5xl font-extrabold text-coral">0</p>
-      </div>
+    <div class="dashboard">
+        <div class="stat-card total">
+            <p>Total</p>
+            <h2 id="total-count">0</h2>
+        </div>
+        <div class="stat-card interview">
+            <p>Interview</p>
+            <h2 id="interview-count">0</h2>
+        </div>
+        <div class="stat-card rejected">
+            <p>Rejected</p>
+            <h2 id="rejected-count">0</h2>
+        </div>
     </div>
 
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="font-syne text-2xl font-bold text-navy">Available Jobs</h2>
-      <span class="text-sm font-semibold text-slate-400">8 jobs</span>
-    </div>
-
-    <div class="flex gap-3 mb-8">
-      <button class="px-6 py-2 rounded-full border-2 border-navy bg-navy text-white text-sm font-bold shadow-md cursor-pointer transition-all">All</button>
-      <button class="px-6 py-2 rounded-full border-2 border-slate-200 bg-white text-slate-500 text-sm font-medium hover:border-teal hover:text-teal cursor-pointer transition-all">Interview</button>
-      <button class="px-6 py-2 rounded-full border-2 border-slate-200 bg-white text-slate-500 text-sm font-medium hover:border-coral hover:text-coral cursor-pointer transition-all">Rejected</button>
-    </div>
-    
-<div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300">
-  
-  <div class="flex justify-between items-start mb-1">
-    <div>
-      <h3 class="text-lg font-bold text-slate-800">Innovation Labs</h3>
-      <p class="text-slate-600 font-medium text-sm">UI/UX Engineer</p>
-    </div>
-    <button class="text-slate-400 hover:text-red-500 transition-colors">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-      </svg>
-    </button>
-  </div>
-
-  <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-500 text-xs mb-4">
-    <span>Austin, TX</span>
-    <span>•</span>
-    <span>Full-time</span>
-    <span>•</span>
-    <span>$110,000 - $150,000</span>
-  </div>
-
-  <div class="mb-4">
-    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider">
-      Not Applied
-    </span>
-  </div>
-
-  <p class="text-slate-600 text-sm leading-relaxed mb-6">
-    Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.
-  </p>
-
-  <div class="flex gap-3">
-    <button class="px-6 py-2 rounded-lg border border-emerald-500 text-emerald-600 text-sm font-bold hover:bg-emerald-50 transition-colors uppercase tracking-tight">
-      Interview
-    </button>
-    <button class="px-6 py-2 rounded-lg border border-red-400 text-red-500 text-sm font-bold hover:bg-red-50 transition-colors uppercase tracking-tight">
-      Rejected
-    </button>
-  </div>
+    <div class="section-header">
+    <h2>Available Jobs</h2>
+    <span id="tab-job-count">0 jobs</span>
 </div>
 
-
-
-<div id="job-container" class="space-y-5">
-  
-  <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm relative transition-all">
-    
-    <button class="absolute top-6 right-8 text-slate-300 hover:text-red-500 transition-colors">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-      </svg>
-    </button>
-
-    <div class="space-y-2">
-      <h3 class="text-xl font-bold text-slate-800">DataViz Solutions</h3>
-      <p class="text-slate-500 font-medium">Data Visualization Specialist</p>
-      
-      <div class="flex flex-wrap gap-2 pt-1 pb-3 text-[10px] font-bold uppercase tracking-wider">
-        <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md">Boston, MA</span>
-        <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md">Full-time</span>
-        <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md">$125,000 - $165,000</span>
-      </div>
-
-      <div class="inline-block bg-indigo-50 text-indigo-600 px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest mb-3">
-        Not Applied
-      </div>
-
-      <p class="text-slate-600 text-[13.5px] leading-relaxed max-w-3xl">
-        Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.
-      </p>
-
-      <div class="flex gap-4 pt-4">
-        <button class="px-8 py-2.5 rounded-xl border-2 border-slate-200 text-slate-500 text-xs font-bold hover:border-emerald-500 hover:text-emerald-500 transition-all uppercase">
-          Interview
-        </button>
-        <button class="px-8 py-2.5 rounded-xl border-2 border-slate-200 text-slate-500 text-xs font-bold hover:border-red-400 hover:text-red-400 transition-all uppercase">
-          Rejected
-        </button>
-      </div>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="changeTab('ALL')">All</button>
+        <button class="tab-btn" onclick="changeTab('INTERVIEW')">Interview</button>
+        <button class="tab-btn" onclick="changeTab('REJECTED')">Rejected</button>
     </div>
-  </div>
 
+    <div id="jobs-container"></div>
 </div>
 
+<script src="script.js"></script>
 </body>
-</html> 
+</html>
